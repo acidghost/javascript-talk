@@ -9,4 +9,4 @@ gulp.task('dev', function() {
   gulp.watch('slides.md', ['slides'])
 });
 
-gulp.task('default', ['dev'])
+gulp.task('default', ['slides', 'dev'])
