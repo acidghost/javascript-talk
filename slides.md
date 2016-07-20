@@ -9,7 +9,8 @@
 - lingua franca del Web
 - consente di interagire con pagine HTML
 - uno standard W3C (ECMAScript)
-- vive all'interno di una pagina HTML
+- (normalmente) vive all'interno di una pagina HTML
+
 
 # Prerequisito: HTML
 
@@ -54,7 +55,7 @@
         <li>List item 1</li>
         <li>List item 2</li>
       </ul>
-      <script type="javascript" src="js/script.js"></script>
+      <script type="text/javascript" src="js/script.js"></script>
     </div>
   </body>
 </html>
@@ -89,6 +90,11 @@
 - forms and input: `<form>`, `<input />`, `<textarea>`, `<button>`, `<submit>`,
   `<select>`, `<option>`
 
+## References
+
+> - [http://www.w3schools.com/html/default.asp](http://www.w3schools.com/html/default.asp)
+> - [https://www.w3.org/html/](https://www.w3.org/html/)
+
 
 # Document Object Model (DOM)   {#dom}
 
@@ -103,17 +109,53 @@
 
 ![Document Object Model](./img/DOM.png)
 
+
 # JavaScript in dettaglio
+
+## Caratteristiche
+
+- case sensitive (someName <span>&ne;</span> somename)
+- è un linguaggio di scripting
+- tipizzazione dinamica
+- basato su oggetti (*non classi!*)
 
 ## Eseguire JS
 
-`<script type="javascript"> codice JavaScript </script>`
+`<script type="text/javascript"> codice JavaScript </script>`
+
+- normalmente prima del tag di chiusura `</body>`
+- raramente prima del tag di chiusura `</head>`
 
 ## Tipi di dato
 
-- JS è un linguaggio di scripting, dinamico, basato su oggetti.
 - non è tipizzato ma comunque esistono i tipi di dato
-    + numerico (intero o reale)
-    + booleano (`true`, `false`)
-    + stringa
-    + array
+    * primitivi
+        + numerico (`int` o `float`)
+        + booleano (`true`, `false`)
+        + stringa (`"hello"` o `'hello'`)
+    * strutture dati
+        + array
+        + oggetti
+    * speciali
+        + `undefined`
+        + `null`
+
+## Variabili
+
+- è una *scatola* che può contenere un istanza di un qualsiasi tipo di dato
+- il valore contenuto può cambiare durante l'esecuzione del programma
+- dichiarata tramite la keyword `var`
+
+## Variabili: esempio
+
+~~~~~~{.js .numberLines}
+var myVariable = "this is a string";
+var myInteger = 10;
+
+myVariable = 42;
+myInteger = myVariable;
+
+console.log("myVariable ha valore", myVariable);
+console.log("myInteger ha valore " + myInteger);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[https://jsfiddle.net/acidghost/bw9vr0en/](https://jsfiddle.net/acidghost/bw9vr0en/)
