@@ -150,7 +150,7 @@
 
 ~~~~~~{.js .numberLines}
 var myVariable = "this is a string";
-var myInteger = 10;
+var myInteger = (10 * 2) / 3;   // usuali op. numerici
 
 myVariable = 42;
 myInteger = myVariable;
@@ -159,3 +159,193 @@ console.log("myVariable ha valore", myVariable);
 console.log("myInteger ha valore " + myInteger);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [https://jsfiddle.net/acidghost/bw9vr0en/](https://jsfiddle.net/acidghost/bw9vr0en/)
+
+## Array
+
+- è una collezione di valori (anche non omogenei)
+- accessibili tramite un indice (da `0` ad `n`)
+- dimensione dinamica
+
+## Array: esempio
+
+~~~~~~{.js .numberLines}
+var myArray = [1, 2, 3, 4],
+    matrix = [[1, '2', 3.2],
+              [true, 'array', 'stringa'],
+              [true, false, null]];
+
+console.log(myArray[0]);     // primo elemento -> 1
+console.log(myArray[2]);     // terzo elemento -> 3
+console.log(matrix[2][2]);   // terza riga, terza colonna -> null
+
+myArray[0] = 0;              // setta il valore
+~~~~~~~~~~~
+[https://jsfiddle.net/acidghost/sq9v3tu8/](https://jsfiddle.net/acidghost/sq9v3tu8/)
+
+## Oggetti
+
+- principale tipo di dato in JS
+- una struttura con:
+    + proprietà
+    + metodi
+
+## Oggetti: esempio
+
+~~~~~~{.js .numberLines}
+var array = new Array(1, '123');
+
+console.log(array.length);    // proprietà
+array.push(10);               // metodo
+~~~~~~~~~
+[https://jsfiddle.net/acidghost/9op4jxfs/](https://jsfiddle.net/acidghost/9op4jxfs/)
+
+## Oggetti: esempio
+
+~~~~~~{.js .numberLines}
+var myObj = new Object();
+myObj.myProp = 42;
+myObj.myMethod = function() {
+  return 'I\'m a method!';
+};
+console.log(myObj);
+console.log(myObj.myMethod());
+
+var myObj2 = {
+  myProp: 42,
+  myMethod: function() {
+    return 'I\'m a method!';
+  }
+};
+console.log(myObj2);
+console.log(myObj2.myMethod());
+~~~~~~~~
+[https://jsfiddle.net/acidghost/4rz25y74/](https://jsfiddle.net/acidghost/4rz25y74/)
+
+## Funzioni
+
+- consentono il riuso del codice
+- hanno uno scope
+- sono cittadini di primo livello
+    + JS supporta funzioni di ordine superiore
+
+## Funzioni: esempio
+
+~~~~~~{.js .numberLines}
+var greet = function(name) {
+  var nameArr = name.split('');
+  nameArr[name.length - 1] = 'z';
+  name = nameArr.join('');
+  return 'Hello, ' + name + '!';
+};
+console.log(greet('Andrea'));
+
+function greet2(name) {
+  return 'Hello, ' + name + '!';
+};
+console.log(greet2('Andrea'));
+~~~~~~~~~
+[https://jsfiddle.net/acidghost/axbgbm0t/](https://jsfiddle.net/acidghost/axbgbm0t/)
+
+## Funzioni: scoping
+
+~~~~~~{.js .numberLines}
+var integer = 3;
+var square = function() {
+  integer *= integer;
+};
+square();
+console.log(integer);		// 9
+var square2 = function(integer) {
+  return integer *= integer;
+};
+square();
+console.log(integer);		// 81
+
+integer = square2(3);
+console.log(integer);		// 9
+~~~~~~~~~
+[https://jsfiddle.net/acidghost/91ezf1bu/](https://jsfiddle.net/acidghost/91ezf1bu/)
+
+## Condizioni
+
+- blocco if-else
+- comparazione (`!=`, `==`, `>`, `<`, `>=`, `<=`)
+- operatori booleani (`&&`, `||`, `!`)
+
+## Tavole di verità
+
+A    B    A `&&` B
+---  ---  ---
+0    0      0
+0    1      0
+1    0      0
+1    1      1
+
+## Tavole di verità
+
+A    B    A `||` B
+---  ---  ---
+0    0      0
+0    1      1
+1    0      1
+1    1      1
+
+## Tavole di verità
+
+A    `!`A
+---  ---
+0    1
+1    0
+
+## Condizioni: esempio
+
+~~~~~~{.js .numberLines}
+var n = 42;
+if (n == 42) {
+  console.log('n ha valore 42');
+} else {
+  console.log('n non ha valore 42');
+}
+
+var k = 'stringa';
+if (n == k || n >= 42) {
+  console.log('blocco if');
+} else {
+  console.log('blocco else');
+}
+~~~~~~~~~
+[https://jsfiddle.net/acidghost/L093mcnv/](https://jsfiddle.net/acidghost/L093mcnv/)
+
+## Beware!
+
+- l'operatore `===` esegue uguaglianza su valore + tipo!
+- `5 == '5'` -> `true`
+- `5 === '5'` -> `false`
+- preferibile, ma con attenzione
+
+## Condizioni: op. ternario
+
+~~~~~~{.js .numberLines}
+var n = 42;
+var k = n == 42 ? 'n = 42' : 'n != 42';
+console.log(k);
+~~~~~~~~~
+[https://jsfiddle.net/acidghost/hhtwqg7k/](https://jsfiddle.net/acidghost/hhtwqg7k/)
+
+## Switch
+
+~~~~~~{.js .numberLines}
+var n = 42;
+switch (n) {
+  case 1:
+    console.log('n == 1');
+    break;
+  case 42:
+    console.log('n == 42');
+    break;
+  // .....
+  default:
+    console.log('n ==' + n);
+}
+~~~~~~~~~
+[https://jsfiddle.net/acidghost/ktu5juLf/](https://jsfiddle.net/acidghost/ktu5juLf/)
