@@ -145,6 +145,7 @@
 - è una *scatola* che può contenere un istanza di un qualsiasi tipo di dato
 - il valore contenuto può cambiare durante l'esecuzione del programma
 - dichiarata tramite la keyword `var`
+- assegnamento con `=` o `<op>=` (dove <op> è un operatore aritmetico)
 
 ## Variabili: esempio
 
@@ -153,6 +154,7 @@ var myVariable = "this is a string";
 var myInteger = (10 * 2) / 3;   // usuali op. numerici
 
 myVariable = 42;
+myVariable += 3;
 myInteger = myVariable;
 
 console.log("myVariable ha valore", myVariable);
@@ -332,6 +334,20 @@ console.log(k);
 ~~~~~~~~~
 [https://jsfiddle.net/acidghost/hhtwqg7k/](https://jsfiddle.net/acidghost/hhtwqg7k/)
 
+## If-else multipli
+
+~~~~~~{.js .numberLines}
+if (n == 1) {
+  // something
+} else if (n == 2) {
+  // something else
+} else if (n == 3) {
+  // .....
+} else {
+  // otherwise
+}
+~~~~~~~~~
+
 ## Switch
 
 ~~~~~~{.js .numberLines}
@@ -349,3 +365,71 @@ switch (n) {
 }
 ~~~~~~~~~
 [https://jsfiddle.net/acidghost/ktu5juLf/](https://jsfiddle.net/acidghost/ktu5juLf/)
+
+## Loops: for
+
+~~~~~~{.js .numberLines}
+for (var i = 0; i < 10; i++) {
+  console.log(i);
+}
+~~~~~~~~~
+[https://jsfiddle.net/acidghost/ydyqqshy/](https://jsfiddle.net/acidghost/ydyqqshy/)
+
+## Loops: for-in
+
+~~~~~~{.js .numberLines}
+var person = {fname: "John", lname: "Doe", age: 25};
+
+var text = "";
+for (var x in person) {
+  text += person[x];
+}
+console.log(text);
+~~~~~~~~~~~~
+[https://jsfiddle.net/acidghost/0hp9mpvj/](https://jsfiddle.net/acidghost/0hp9mpvj/)
+
+## Loops: while
+
+~~~~~~{.js .numberLines}
+var i = 0;
+while (i < 10) {
+  console.log(i);
+}
+~~~~~~~~~~~~
+
+## Loops: do-while
+
+~~~~~~{.js .numberLines}
+var i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i < 10);
+~~~~~~~~~~~~
+
+## Loops: break & continue
+
+- `break` esce dal loop corrente
+- `continue` interrompe il loop e torna alla condizione
+
+## `break` esempio
+
+~~~~~~{.js .numberLines}
+for (var i = 0; i < 10; i++) {
+  if (i === 5)
+    break;
+  console.log(i);
+}
+~~~~~~~~~~~~
+[https://jsfiddle.net/acidghost/0rsepx0j/](https://jsfiddle.net/acidghost/0rsepx0j/)
+
+## `continue` esempio
+
+~~~~~~{.js .numberLines}
+for (var i = 0; i < 10; i++) {
+  if (i === 5)
+    continue;
+  console.log(i);
+}
+~~~~~~~~~~~~
+[https://jsfiddle.net/acidghost/8m4k9zpp/](https://jsfiddle.net/acidghost/8m4k9zpp/)
