@@ -480,6 +480,10 @@ try {
 
 # Practice time!
 
+## Codewars
+- portale per imparare linguaggi
+- [www.codewars.com/r/K55Psg](www.codewars.com/r/K55Psg)
+
 ## First-Class Function Factory
 - funzione principale ha argomento `x`
 - ritorna una nuova funzione che accetta un array
