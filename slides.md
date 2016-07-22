@@ -478,6 +478,23 @@ try {
 ~~~~~~
 [https://jsfiddle.net/acidghost/pa7ub68L/](https://jsfiddle.net/acidghost/pa7ub68L/)
 
+# Practice time!
+
+## First-Class Function Factory
+- funzione principale ha argomento `x`
+- ritorna una nuova funzione che accetta un array
+- moltiplica ogni elemento dell'array per `x`
+- [https://www.codewars.com/kata/first-class-function-factory/javascript](https://www.codewars.com/kata/first-class-function-factory/javascript)
+- metodi utili: `map(fn)`, for loop(s)
+
+## Jaden Smith -ifyer
+- trasformare `'SOS rocks the World!'` in `'SOS Rocks The World!'`
+- [https://www.codewars.com/kata/jaden-casing-strings/javascript](https://www.codewars.com/kata/jaden-casing-strings/javascript)
+- metodi utili: `map(fn)`, `split(s)`, `join(s)`, for loop(s), `slice(n)`, `charAt(n)`
+- hints:
+    + trasformare ogni parola `'rocks'` in `'Rocks'`
+    + trasformare la prima lettera di ogni parola
+
 
 
 
@@ -662,11 +679,11 @@ $(document).ready(function(){
 
 
 
-# Exercise time!
+# Practice time!
 ## Generatore di nomi pirata
 - trasformare un nome e cognome in nome **pirata**
 - creare due elementi `<input type="text" />`
-- trasformare il nome sostituendo l'ultima lettera con un altra
+- trasformare il nome (...)
 - includere un soprannome (casualmente)
 - sostituire il cognome con un nome pirata con la stessa iniziale (casualmente)
 - visualizzare il risultato in un elemento HTML (`<div>`, `<p>`, `<input />`, ...)
