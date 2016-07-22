@@ -1,0 +1,6 @@
+.smaller h1 {
+  font-size: 3em;
+}
+.smaller.all {
+  font-size: smaller;
+}

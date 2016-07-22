@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Andrea Jemmett">
+  <title>Intro a JavaScript</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="./style/style.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Intro a JavaScript</h1>
+  <h2 class="author">Andrea Jemmett</h2>
+  <h3 class="date">S.O.S. + Coompany</h3>
+</section>
+
+<section><section id="javascript" class="titleslide slide level1"><h1>JavaScript</h1></section><section id="cosè-js" class="slide level2">
+<h1>Cos’è JS?</h1>
+<ul>
+<li class="fragment">lingua franca del Web</li>
+<li class="fragment">consente di interagire con pagine HTML</li>
+<li class="fragment">uno standard W3C (ECMAScript)</li>
+<li class="fragment">(normalmente) vive all’interno di una pagina HTML</li>
+</ul>
+</section></section>
+<section><section id="prerequisito-html" class="titleslide slide level1"><h1>Prerequisito: HTML</h1></section><section id="cosè-html" class="slide level2">
+<h1>Cos’è HTML?</h1>
+<ul>
+<li class="fragment">è un linguaggio di markup (e <em>non</em> di <strong>programmazione</strong>)</li>
+<li class="fragment">uno standard W3C
+<ul>
+<li class="fragment">ultima versione HTML5</li>
+</ul></li>
+<li class="fragment">utile alla creazione della <strong>struttura</strong> di pagine Web</li>
+</ul>
+</section><section id="filosofia" class="slide level2">
+<h1>Filosofia</h1>
+<ul>
+<li class="fragment">scinde la presentazione dalla struttura
+<ul>
+<li class="fragment">anche se mette a disposizione <strong>tag</strong> come <code>&lt;b&gt;&lt;/b&gt;</code> o <code>&lt;font&gt;&lt;/font&gt;</code></li>
+</ul></li>
+<li class="fragment">questa scissione rende possibile sviluppare un layer di presentazione diverso in base al dispositivo di visualizzazione (mediante <strong>CSS</strong>)</li>
+</ul>
+</section><section id="lelemento-fondamentale" class="slide level2">
+<h1>L’elemento fondamentale</h1>
+<ul>
+<li class="fragment">HTML mette a disposizione una collezione di <strong>tag</strong></li>
+<li class="fragment">un tag ha forma <code>&lt;tag attr1=&quot;value1&quot; attr2=&quot;value2&quot;&gt;...&lt;/tag&gt;</code>
+<ul>
+<li class="fragment"><code>tag</code> ha solitamente un significato semantico (h1, p, a, head, body, nav, section, …)</li>
+<li class="fragment">attributi agiscono da modificatori</li>
+<li class="fragment">alcuni tag non accettano contenuto <code>&lt;tag attr1=&quot;val1&quot; /&gt;</code></li>
+<li class="fragment">consente tag annidati <code>&lt;tag1&gt;Hello, &lt;tag2&gt;World!&lt;/tag2&gt;&lt;/tag1&gt;</code></li>
+</ul></li>
+</ul>
+</section><section id="una-pagina-html" class="slide level2">
+<h1>Una pagina HTML</h1>
+<div class="sourceCode"><table class="sourceCode html numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="sourceCode"><pre><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<span class="kw">&lt;html&gt;</span>
+  <span class="kw">&lt;head&gt;</span>
+    <span class="kw">&lt;title&gt;</span>My HTML page title<span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;/head&gt;</span>
+  <span class="kw">&lt;body&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>Hello, HTML!<span class="kw">&lt;/h1&gt;</span>
+    <span class="co">&lt;!-- I&#39;m a comment --&gt;</span>
+    <span class="kw">&lt;p&gt;</span>I&#39;m a paragraph of this HTML page<span class="kw">&lt;/p&gt;</span>
+    <span class="kw">&lt;p&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;http://google.com&quot;</span><span class="kw">&gt;</span>This<span class="kw">&lt;/a&gt;</span> is a link<span class="kw">&lt;/p&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> align=</span><span class="st">&quot;right&quot;</span><span class="kw">&gt;</span>
+      <span class="kw">&lt;ul&gt;</span>
+        <span class="kw">&lt;li&gt;</span>List item 1<span class="kw">&lt;/li&gt;</span>
+        <span class="kw">&lt;li&gt;</span>List item 2<span class="kw">&lt;/li&gt;</span>
+      <span class="kw">&lt;/ul&gt;</span>
+      <span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> src=</span><span class="st">&quot;js/script.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre></td></tr></table></div>
+</section><section class="slide level2">
+
+<figure>
+<img src="./media/ex1.png" alt="Una pagina HTML" /><figcaption>Una pagina HTML</figcaption>
+</figure>
+</section><section id="tag-comuni-1" class="slide level2">
+<h1>Tag comuni (1)</h1>
+<ul>
+<li class="fragment"><code>&lt;html&gt;</code> racchiude l’intero documento HTML</li>
+<li class="fragment"><code>&lt;head&gt;</code> e <code>&lt;body&gt;</code> racchiudono l’intestazione (e metadati) ed il corpo rispettivamente</li>
+<li class="fragment">headings: <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code></li>
+<li class="fragment">horizontal rule: <code>&lt;hr /&gt;</code></li>
+<li class="fragment">paragraph: <code>&lt;p&gt;</code></li>
+<li class="fragment">line break: <code>&lt;br /&gt;</code></li>
+<li class="fragment">text formatting: <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;sub&gt;</code>, <code>&lt;sup&gt;</code>, …</li>
+<li class="fragment">quotations: <code>&lt;abbr&gt;</code>, <code>&lt;address&gt;</code>, <code>&lt;blockquote&gt;</code>, <code>&lt;cite&gt;</code></li>
+<li class="fragment">styling: <code>&lt;style&gt;</code>, <code>&lt;link rel=&quot;css/stylesheet&quot; /&gt;</code></li>
+<li class="fragment">graphics: <code>&lt;canvas&gt;</code>, <code>&lt;svg&gt;</code></li>
+</ul>
+</section><section id="tag-comuni-2" class="slide level2">
+<h1>Tag comuni (2)</h1>
+<ul>
+<li class="fragment">links: <code>&lt;a&gt;</code></li>
+<li class="fragment">media: <code>&lt;img /&gt;</code>, <code>&lt;video&gt;</code>, <code>&lt;embed&gt;</code>, <code>&lt;iframe&gt;</code></li>
+<li class="fragment">tables: <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code></li>
+<li class="fragment">lists: <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code>, <code>&lt;dl&gt;</code>, <code>&lt;dd&gt;</code>, <code>&lt;dt&gt;</code></li>
+<li class="fragment">block and inline: <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code></li>
+<li class="fragment">layout: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;details&gt;</code>, <code>&lt;summary&gt;</code></li>
+<li class="fragment">forms and input: <code>&lt;form&gt;</code>, <code>&lt;input /&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;button&gt;</code>, <code>&lt;submit&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;option&gt;</code></li>
+</ul>
+</section><section id="references" class="slide level2">
+<h1>References</h1>
+<ul>
+<li><a href="http://www.w3schools.com/html/default.asp" class="uri">http://www.w3schools.com/html/default.asp</a></li>
+<li><a href="https://www.w3.org/html/" class="uri">https://www.w3.org/html/</a></li>
+</ul>
+</section></section>
+<section><section id="javascript-in-dettaglio" class="titleslide slide level1"><h1>JavaScript in dettaglio</h1></section><section id="caratteristiche" class="slide level2">
+<h1>Caratteristiche</h1>
+<ul>
+<li class="fragment">case sensitive (someName <span>≠</span> somename)</li>
+<li class="fragment">è un linguaggio di scripting</li>
+<li class="fragment">tipizzazione dinamica</li>
+<li class="fragment">basato su oggetti (<em>non classi!</em>)</li>
+</ul>
+</section><section id="eseguire-js" class="slide level2">
+<h1>Eseguire JS</h1>
+<p><code>&lt;script type=&quot;text/javascript&quot;&gt; codice JavaScript &lt;/script&gt;</code></p>
+<ul>
+<li class="fragment">normalmente prima del tag di chiusura <code>&lt;/body&gt;</code></li>
+<li class="fragment">raramente prima del tag di chiusura <code>&lt;/head&gt;</code></li>
+</ul>
+</section><section id="tipi-di-dato" class="slide level2">
+<h1>Tipi di dato</h1>
+<ul>
+<li class="fragment">non è tipizzato ma comunque esistono i tipi di dato
+<ul>
+<li class="fragment">primitivi
+<ul>
+<li class="fragment">numerico (<code>int</code> o <code>float</code>)</li>
+<li class="fragment">booleano (<code>true</code>, <code>false</code>)</li>
+<li class="fragment">stringa (<code>&quot;hello&quot;</code> o <code>'hello'</code>)</li>
+</ul></li>
+<li class="fragment">strutture dati
+<ul>
+<li class="fragment">array</li>
+<li class="fragment">oggetti</li>
+</ul></li>
+<li class="fragment">speciali
+<ul>
+<li class="fragment"><code>undefined</code></li>
+<li class="fragment"><code>null</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="variabili" class="slide level2">
+<h1>Variabili</h1>
+<ul>
+<li class="fragment">è una <em>scatola</em> che può contenere un istanza di un qualsiasi tipo di dato</li>
+<li class="fragment">il valore contenuto può cambiare durante l’esecuzione del programma</li>
+<li class="fragment">dichiarata tramite la keyword <code>var</code></li>
+<li class="fragment">assegnamento con <code>=</code> o <code>op=</code> (dove <em>op</em> è un operatore aritmetico)</li>
+</ul>
+</section><section id="variabili-esempio" class="slide level2">
+<h1>Variabili: esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> myVariable <span class="op">=</span> <span class="st">&quot;this is a string&quot;</span><span class="op">;</span>
+<span class="kw">var</span> myInteger <span class="op">=</span> (<span class="dv">10</span> <span class="op">*</span> <span class="dv">2</span>) / <span class="dv">3</span><span class="op">;</span>   <span class="co">// usuali op. numerici</span>
+
+myVariable <span class="op">=</span> <span class="dv">42</span><span class="op">;</span>
+myVariable <span class="op">+=</span> <span class="dv">3</span><span class="op">;</span>
+myInteger <span class="op">=</span> myVariable<span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;myVariable ha valore&quot;</span><span class="op">,</span> myVariable)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;myInteger ha valore &quot;</span> <span class="op">+</span> myInteger)<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/bw9vr0en/" class="uri">https://jsfiddle.net/acidghost/bw9vr0en/</a></p>
+</section><section id="tipi-numerici" class="slide level2">
+<h1>Tipi numerici</h1>
+<ul>
+<li class="fragment">interi dichiarati come <code>var x = 42;</code></li>
+<li class="fragment">reali dichiarati come <code>var x = 4.2;</code> o <code>var x = 10e3;</code></li>
+<li class="fragment">operatori binari <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></li>
+<li class="fragment">operatori unari: <code>++</code>, <code>--</code></li>
+</ul>
+</section><section id="array" class="slide level2">
+<h1>Array</h1>
+<ul>
+<li class="fragment">è una collezione di valori (anche non omogenei)</li>
+<li class="fragment">accessibili tramite un indice (da <code>0</code> ad <code>n</code>)</li>
+<li class="fragment">dimensione dinamica</li>
+</ul>
+</section><section id="array-esempio" class="slide level2">
+<h1>Array: esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> myArray <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span>
+    matrix <span class="op">=</span> [[<span class="dv">1</span><span class="op">,</span> <span class="st">&#39;2&#39;</span><span class="op">,</span> <span class="fl">3.2</span>]<span class="op">,</span>
+              [<span class="kw">true</span><span class="op">,</span> <span class="st">&#39;array&#39;</span><span class="op">,</span> <span class="st">&#39;stringa&#39;</span>]<span class="op">,</span>
+              [<span class="kw">true</span><span class="op">,</span> <span class="kw">false</span><span class="op">,</span> <span class="kw">null</span>]]<span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(myArray[<span class="dv">0</span>])<span class="op">;</span>     <span class="co">// primo elemento -&gt; 1</span>
+<span class="va">console</span>.<span class="at">log</span>(myArray[<span class="dv">2</span>])<span class="op">;</span>     <span class="co">// terzo elemento -&gt; 3</span>
+<span class="va">console</span>.<span class="at">log</span>(matrix[<span class="dv">2</span>][<span class="dv">2</span>])<span class="op">;</span>   <span class="co">// terza riga, terza colonna -&gt; null</span>
+
+myArray[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>              <span class="co">// setta il valore</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/sq9v3tu8/" class="uri">https://jsfiddle.net/acidghost/sq9v3tu8/</a></p>
+</section><section id="array-metodi" class="slide level2">
+<h1>Array: metodi</h1>
+<ul>
+<li class="fragment">modifica: <code>map(fn)</code>, <code>concat(array)</code>, <code>push(x)</code>, <code>pop()</code>, <code>reverse()</code>, <code>sort()</code></li>
+<li class="fragment">ricerca: <code>lastIndexOf(x)</code>, <code>indexOf(x)</code>, <code>find(fn)</code></li>
+<li class="fragment">altri: <code>join(x)</code>, <code>forEach(fn)</code>, <code>isArray()</code></li>
+</ul>
+</section><section id="oggetti" class="slide level2">
+<h1>Oggetti</h1>
+<ul>
+<li class="fragment">principale tipo di dato in JS</li>
+<li class="fragment">una struttura con:
+<ul>
+<li class="fragment">proprietà</li>
+<li class="fragment">metodi</li>
+</ul></li>
+</ul>
+</section><section id="oggetti-esempio" class="slide level2">
+<h1>Oggetti: esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> array <span class="op">=</span> <span class="kw">new</span> <span class="at">Array</span>(<span class="dv">1</span><span class="op">,</span> <span class="st">&#39;123&#39;</span>)<span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">array</span>.<span class="at">length</span>)<span class="op">;</span>    <span class="co">// proprietà</span>
+<span class="va">array</span>.<span class="at">push</span>(<span class="dv">10</span>)<span class="op">;</span>               <span class="co">// metodo</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/9op4jxfs/" class="uri">https://jsfiddle.net/acidghost/9op4jxfs/</a></p>
+</section><section id="oggetti-esempio-1" class="slide level2">
+<h1>Oggetti: esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> myObj <span class="op">=</span> <span class="kw">new</span> <span class="at">Object</span>()<span class="op">;</span>
+<span class="va">myObj</span>.<span class="at">myProp</span> <span class="op">=</span> <span class="dv">42</span><span class="op">;</span>
+<span class="va">myObj</span>.<span class="at">myMethod</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+  <span class="cf">return</span> <span class="st">&#39;I</span><span class="sc">\&#39;</span><span class="st">m a method!&#39;</span><span class="op">;</span>
+<span class="op">};</span>
+<span class="va">console</span>.<span class="at">log</span>(myObj)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">myObj</span>.<span class="at">myMethod</span>())<span class="op">;</span>
+
+<span class="kw">var</span> myObj2 <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">myProp</span><span class="op">:</span> <span class="dv">42</span><span class="op">,</span>
+  <span class="dt">myMethod</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="cf">return</span> <span class="st">&#39;I</span><span class="sc">\&#39;</span><span class="st">m a method!&#39;</span><span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">};</span>
+<span class="va">console</span>.<span class="at">log</span>(myObj2)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">myObj2</span>.<span class="at">myMethod</span>())<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/4rz25y74/" class="uri">https://jsfiddle.net/acidghost/4rz25y74/</a></p>
+</section><section id="ereditarietà-prototipale" class="slide level2 smaller">
+<h1> Ereditarietà prototipale</h1>
+<ul>
+<li class="fragment">JS non è basato su classi, ma su oggetti e prototipi</li>
+<li class="fragment">oggetti sono accumunati da un sotto-oggetto <code>prototype</code></li>
+<li class="fragment">quando creiamo un oggetto, usando <code>new</code>, questo <em>eredita</em> proprietà e metodi</li>
+</ul>
+</section><section id="ereditarietà-prototipale-1" class="slide level2 smaller">
+<h1> Ereditarietà prototipale</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> Cane <span class="op">=</span> <span class="kw">function</span>(colore) <span class="op">{</span>
+  <span class="kw">this</span>.<span class="at">colore</span> <span class="op">=</span> colore<span class="op">;</span>
+<span class="op">};</span>
+<span class="va">Cane</span>.<span class="va">prototype</span>.<span class="at">abbaia</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Un cane &#39;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">colore</span> <span class="op">+</span> <span class="st">&#39; sta abbaiando&#39;</span>)<span class="op">;</span>
+<span class="op">};</span>
+
+<span class="kw">var</span> cane1 <span class="op">=</span> <span class="kw">new</span> <span class="at">Cane</span>(<span class="st">&#39;nero&#39;</span>)<span class="op">;</span>
+<span class="va">cane1</span>.<span class="at">abbaia</span>()<span class="op">;</span>
+<span class="kw">var</span> cane2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Cane</span>(<span class="st">&#39;bianco&#39;</span>)<span class="op">;</span>
+<span class="va">cane2</span>.<span class="at">abbaia</span>()<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/kn3v4f3q/" class="uri">https://jsfiddle.net/acidghost/kn3v4f3q/</a></p>
+</section><section id="math-object" class="slide level2">
+<h1><code>Math</code> object</h1>
+<ul>
+<li class="fragment">operazioni e costanti matematiche</li>
+<li class="fragment"><code>abs(x)</code>, <code>min(x1, x2, x3, ...)</code>, <code>cos(x)</code>, <code>sin(x)</code>, <code>exp(x)</code>, <code>floor(x)</code>, <code>random()</code>, …</li>
+</ul>
+</section><section id="date-object" class="slide level2">
+<h1><code>Date</code> object</h1>
+<ul>
+<li class="fragment">utilità per gestire date ed ora</li>
+<li class="fragment">oggetti <code>Date</code> vengono creati con <code>var d = new Date();</code></li>
+</ul>
+</section><section id="funzioni" class="slide level2">
+<h1>Funzioni</h1>
+<ul>
+<li class="fragment">consentono il riuso del codice</li>
+<li class="fragment">hanno uno scope</li>
+<li class="fragment">sono cittadini di primo livello
+<ul>
+<li class="fragment">JS supporta funzioni di ordine superiore</li>
+</ul></li>
+</ul>
+</section><section id="funzioni-esempio" class="slide level2">
+<h1>Funzioni: esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> greet <span class="op">=</span> <span class="kw">function</span>(name) <span class="op">{</span>
+  <span class="kw">var</span> nameArr <span class="op">=</span> <span class="va">name</span>.<span class="at">split</span>(<span class="st">&#39;&#39;</span>)<span class="op">;</span>
+  nameArr[<span class="va">name</span>.<span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>] <span class="op">=</span> <span class="st">&#39;z&#39;</span><span class="op">;</span>
+  name <span class="op">=</span> <span class="va">nameArr</span>.<span class="at">join</span>(<span class="st">&#39;&#39;</span>)<span class="op">;</span>
+  <span class="cf">return</span> <span class="st">&#39;Hello, &#39;</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">&#39;!&#39;</span><span class="op">;</span>
+<span class="op">};</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="at">greet</span>(<span class="st">&#39;Andrea&#39;</span>))<span class="op">;</span>
+
+<span class="kw">function</span> <span class="at">greet2</span>(name) <span class="op">{</span>
+  <span class="cf">return</span> <span class="st">&#39;Hello, &#39;</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">&#39;!&#39;</span><span class="op">;</span>
+<span class="op">};</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="at">greet2</span>(<span class="st">&#39;Andrea&#39;</span>))<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/axbgbm0t/" class="uri">https://jsfiddle.net/acidghost/axbgbm0t/</a></p>
+</section><section id="funzioni-ord.-superiore" class="slide level2">
+<h1>Funzioni: ord. superiore</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> fn <span class="op">=</span> <span class="kw">function</span>(x) <span class="op">{</span> <span class="cf">return</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span> <span class="op">};</span>
+<span class="kw">var</span> array <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span>].<span class="at">map</span>(fn)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">array</span>.<span class="at">toString</span>())<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/1d7636yx/" class="uri">https://jsfiddle.net/acidghost/1d7636yx/</a></p>
+</section><section id="funzioni-ord.-superiore-1" class="slide level2">
+<h1>Funzioni: ord. superiore</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> fn <span class="op">=</span> <span class="kw">function</span>(x) <span class="op">{</span>
+  <span class="cf">return</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="cf">return</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span>
+  <span class="op">};</span>
+<span class="op">};</span>
+<span class="kw">var</span> fn3 <span class="op">=</span> <span class="at">fn</span>(<span class="dv">3</span>)<span class="op">;</span>
+<span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++</span>)
+  <span class="va">console</span>.<span class="at">log</span>(<span class="at">fn3</span>())<span class="op">;</span></code></pre></td></tr></table></div>
+<!-- ## Funzioni: scoping
+~~~~~~{.js .numberLines}
+var fn = function(x) {
+  var xc = x;
+  return function() {
+    return xc * 2;
+  };
+};
+var fn3 = fn(3);
+for (var i = 0; i < 5; i++)
+  console.log(fn3());
+~~~~~~
+[https://jsfiddle.net/acidghost/wxegr406/](https://jsfiddle.net/acidghost/wxegr406/) -->
+</section><section id="funzioni-scoping" class="slide level2">
+<h1>Funzioni: scoping</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> integer <span class="op">=</span> <span class="dv">3</span><span class="op">;</span>
+<span class="kw">var</span> square <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+  integer <span class="op">*=</span> integer<span class="op">;</span>
+<span class="op">};</span>
+<span class="at">square</span>()<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(integer)<span class="op">;</span>       <span class="co">// 9</span>
+<span class="kw">var</span> square2 <span class="op">=</span> <span class="kw">function</span>(integer) <span class="op">{</span>
+  <span class="cf">return</span> integer <span class="op">*=</span> integer<span class="op">;</span>
+<span class="op">};</span>
+<span class="at">square</span>()<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(integer)<span class="op">;</span>       <span class="co">// 81</span>
+
+integer <span class="op">=</span> <span class="at">square2</span>(<span class="dv">3</span>)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(integer)<span class="op">;</span>       <span class="co">// 9</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/91ezf1bu/" class="uri">https://jsfiddle.net/acidghost/91ezf1bu/</a></p>
+</section><section id="condizioni" class="slide level2">
+<h1>Condizioni</h1>
+<ul>
+<li class="fragment">blocco if-else</li>
+<li class="fragment">comparazione (<code>!=</code>, <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>)</li>
+<li class="fragment">operatori booleani (<code>&amp;&amp;</code>, <code>||</code>, <code>!</code>)</li>
+</ul>
+</section><section id="tavole-di-verità" class="slide level2">
+<h1>Tavole di verità</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">A</th>
+<th style="text-align: left;">B</th>
+<th>A <code>&amp;&amp;</code> B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</section><section id="tavole-di-verità-1" class="slide level2">
+<h1>Tavole di verità</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">A</th>
+<th style="text-align: left;">B</th>
+<th>A <code>||</code> B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</section><section id="tavole-di-verità-2" class="slide level2">
+<h1>Tavole di verità</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">A</th>
+<th><code>!</code>A</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</section><section id="condizioni-esempio" class="slide level2">
+<h1>Condizioni: esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> n <span class="op">=</span> <span class="dv">42</span><span class="op">;</span>
+<span class="cf">if</span> (n <span class="op">==</span> <span class="dv">42</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;n ha valore 42&#39;</span>)<span class="op">;</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;n non ha valore 42&#39;</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">var</span> k <span class="op">=</span> <span class="st">&#39;stringa&#39;</span><span class="op">;</span>
+<span class="cf">if</span> (n <span class="op">==</span> k <span class="op">||</span> n <span class="op">&gt;=</span> <span class="dv">42</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;blocco if&#39;</span>)<span class="op">;</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;blocco else&#39;</span>)<span class="op">;</span>
+<span class="op">}</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/L093mcnv/" class="uri">https://jsfiddle.net/acidghost/L093mcnv/</a></p>
+</section><section id="beware" class="slide level2">
+<h1>Beware!</h1>
+<ul>
+<li class="fragment">l’operatore <code>===</code> esegue uguaglianza su valore + tipo!</li>
+<li class="fragment"><code>5 == '5'</code> -&gt; <code>true</code></li>
+<li class="fragment"><code>5 === '5'</code> -&gt; <code>false</code></li>
+<li class="fragment">preferibile, ma con attenzione</li>
+</ul>
+</section><section id="condizioni-op.-ternario" class="slide level2">
+<h1>Condizioni: op. ternario</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> n <span class="op">=</span> <span class="dv">42</span><span class="op">;</span>
+<span class="kw">var</span> k <span class="op">=</span> n <span class="op">==</span> <span class="dv">42</span> <span class="op">?</span> <span class="st">&#39;n = 42&#39;</span> : <span class="st">&#39;n != 42&#39;</span><span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(k)<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/hhtwqg7k/" class="uri">https://jsfiddle.net/acidghost/hhtwqg7k/</a></p>
+</section><section id="if-else-multipli" class="slide level2">
+<h1>If-else multipli</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="cf">if</span> (n <span class="op">==</span> <span class="dv">1</span>) <span class="op">{</span>
+  <span class="co">// something</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> (n <span class="op">==</span> <span class="dv">2</span>) <span class="op">{</span>
+  <span class="co">// something else</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> (n <span class="op">==</span> <span class="dv">3</span>) <span class="op">{</span>
+  <span class="co">// .....</span>
+<span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+  <span class="co">// otherwise</span>
+<span class="op">}</span></code></pre></td></tr></table></div>
+</section><section id="switch" class="slide level2">
+<h1>Switch</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> n <span class="op">=</span> <span class="dv">42</span><span class="op">;</span>
+<span class="cf">switch</span> (n) <span class="op">{</span>
+  <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;n == 1&#39;</span>)<span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+  <span class="cf">case</span> <span class="dv">42</span><span class="op">:</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;n == 42&#39;</span>)<span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+  <span class="co">// .....</span>
+  <span class="dt">default</span><span class="op">:</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;n ==&#39;</span> <span class="op">+</span> n)<span class="op">;</span>
+<span class="op">}</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/ktu5juLf/" class="uri">https://jsfiddle.net/acidghost/ktu5juLf/</a></p>
+</section><section id="loops-for" class="slide level2">
+<h1>Loops: for</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(i)<span class="op">;</span>
+<span class="op">}</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/ydyqqshy/" class="uri">https://jsfiddle.net/acidghost/ydyqqshy/</a></p>
+</section><section id="loops-for-in" class="slide level2">
+<h1>Loops: for-in</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> person <span class="op">=</span> <span class="op">{</span><span class="dt">fname</span><span class="op">:</span> <span class="st">&quot;John&quot;</span><span class="op">,</span> <span class="dt">lname</span><span class="op">:</span> <span class="st">&quot;Doe&quot;</span><span class="op">,</span> <span class="dt">age</span><span class="op">:</span> <span class="dv">25</span><span class="op">};</span>
+
+<span class="kw">var</span> text <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span>
+<span class="cf">for</span> (<span class="kw">var</span> x <span class="kw">in</span> person) <span class="op">{</span>
+  text <span class="op">+=</span> person[x]<span class="op">;</span>
+<span class="op">}</span>
+<span class="va">console</span>.<span class="at">log</span>(text)<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/0hp9mpvj/" class="uri">https://jsfiddle.net/acidghost/0hp9mpvj/</a></p>
+</section><section id="loops-while" class="slide level2">
+<h1>Loops: while</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>
+<span class="cf">while</span> (i <span class="op">&lt;</span> <span class="dv">10</span>) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(i)<span class="op">;</span>
+<span class="op">}</span></code></pre></td></tr></table></div>
+</section><section id="loops-do-while" class="slide level2">
+<h1>Loops: do-while</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>
+<span class="cf">do</span> <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(i)<span class="op">;</span>
+  i<span class="op">++;</span>
+<span class="op">}</span> <span class="cf">while</span> (i <span class="op">&lt;</span> <span class="dv">10</span>)<span class="op">;</span></code></pre></td></tr></table></div>
+</section><section id="loops-break-continue" class="slide level2">
+<h1>Loops: break &amp; continue</h1>
+<ul>
+<li class="fragment"><code>break</code> esce dal loop corrente</li>
+<li class="fragment"><code>continue</code> interrompe il loop e torna alla condizione</li>
+</ul>
+</section><section id="break-esempio" class="slide level2">
+<h1><code>break</code> esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+  <span class="cf">if</span> (i <span class="op">===</span> <span class="dv">5</span>)
+    <span class="cf">break</span><span class="op">;</span>
+  <span class="va">console</span>.<span class="at">log</span>(i)<span class="op">;</span>
+<span class="op">}</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/0rsepx0j/" class="uri">https://jsfiddle.net/acidghost/0rsepx0j/</a></p>
+</section><section id="continue-esempio" class="slide level2">
+<h1><code>continue</code> esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+  <span class="cf">if</span> (i <span class="op">===</span> <span class="dv">5</span>)
+    <span class="cf">continue</span><span class="op">;</span>
+  <span class="va">console</span>.<span class="at">log</span>(i)<span class="op">;</span>
+<span class="op">}</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/8m4k9zpp/" class="uri">https://jsfiddle.net/acidghost/8m4k9zpp/</a></p>
+</section><section id="gestione-errori-try-...-catch" class="slide level2">
+<h1>Gestione errori: <code class="smaller">try ... catch</code></h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="cf">try</span> <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="at">something</span>())<span class="op">;</span>
+<span class="op">}</span> <span class="cf">catch</span> (err) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="va">err</span>.<span class="at">message</span>)<span class="op">;</span>
+<span class="op">}</span> <span class="cf">finally</span> <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;...infine&#39;</span>)<span class="op">;</span>
+<span class="op">}</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/pa7ub68L/" class="uri">https://jsfiddle.net/acidghost/pa7ub68L/</a></p>
+</section></section>
+<section><section id="practice-time" class="titleslide slide level1"><h1>Practice time!</h1></section><section id="codewars" class="slide level2">
+<h1>Codewars</h1>
+<ul>
+<li class="fragment">portale per imparare linguaggi</li>
+<li class="fragment"><a href="www.codewars.com/r/K55Psg" class="uri">www.codewars.com/r/K55Psg</a></li>
+</ul>
+</section><section id="first-class-function-factory" class="slide level2">
+<h1> First-Class Function Factory</h1>
+<ul>
+<li class="fragment">funzione principale ha argomento <code>x</code></li>
+<li class="fragment">ritorna una nuova funzione che accetta un array</li>
+<li class="fragment">moltiplica ogni elemento dell’array per <code>x</code></li>
+<li class="fragment"><a href="https://www.codewars.com/kata/first-class-function-factory/javascript" class="uri">https://www.codewars.com/kata/first-class-function-factory/javascript</a></li>
+<li class="fragment">metodi utili: <code>map(fn)</code>, for loop(s)</li>
+</ul>
+</section><section id="jaden-smith--ifyer" class="slide level2">
+<h1>Jaden Smith -ifyer</h1>
+<ul>
+<li class="fragment">trasformare <code>'SOS rocks the World!'</code> in <code>'SOS Rocks The World!'</code></li>
+<li class="fragment"><a href="https://www.codewars.com/kata/jaden-casing-strings/javascript" class="uri">https://www.codewars.com/kata/jaden-casing-strings/javascript</a></li>
+<li class="fragment">metodi utili: <code>map(fn)</code>, <code>split(s)</code>, <code>join(s)</code>, for loop(s), <code>slice(n)</code>, <code>charAt(n)</code></li>
+<li class="fragment">hints:
+<ul>
+<li class="fragment">trasformare ogni parola <code>'rocks'</code> in <code>'Rocks'</code></li>
+<li class="fragment">trasformare la prima lettera di ogni parola</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="js-html-dom-bom" class="titleslide slide level1"><h1>JS, HTML, DOM, BOM</h1></section><section id="cosè-il-dom" class="slide level2">
+<h1>Cos’è il DOM?</h1>
+<ul>
+<li class="fragment">un modello per descrivere pagine Web</li>
+<li class="fragment">standard W3C</li>
+<li class="fragment">indipendente da browser</li>
+<li class="fragment">interagire con una pagina Web ed i suoi componenti</li>
+</ul>
+</section><section class="slide level2">
+
+<figure>
+<img src="./media/DOM.png" alt="Document Object Model" /><figcaption>Document Object Model</figcaption>
+</figure>
+</section><section id="the-document-object" class="slide level2">
+<h1>The <code>document</code> object</h1>
+<ul>
+<li class="fragment">JS implementa una API per il DOM</li>
+<li class="fragment">l’oggetto <code>document</code> è quest’interfaccia</li>
+</ul>
+</section><section id="metodi-utili-trovare" class="slide level2 smaller">
+<h1>Metodi utili: trovare</h1>
+<ul>
+<li class="fragment"><code>document.getElementById(id)</code>, <code>.getElementsByTagName(name)</code>, <code>.getElementsByClassName(name)</code></li>
+<li class="fragment"><code>document.querySelectorAll(css_selector)</code></li>
+</ul>
+</section><section id="metodi-utili-cambiare" class="slide level2 smaller">
+<h1>Metodi utili: cambiare</h1>
+<ul>
+<li class="fragment"><code>element.innerHTML =  new html content</code> o <code>element.textContent = 'some text'</code></li>
+<li class="fragment"><code>element.attribute = new value</code> o <code>element.setAttribute(attribute, value)</code></li>
+<li class="fragment"><code>element.style.property = new style</code></li>
+</ul>
+</section><section id="metodi-utili-add-rm" class="slide level2 smaller">
+<h1>Metodi utili: add / rm</h1>
+<ul>
+<li class="fragment"><code>document.createElement(element)</code></li>
+<li class="fragment"><code>document.removeChild(element)</code>, <code>.appendChild(element)</code>, <code>.replaceChild(element)</code></li>
+</ul>
+</section><section id="esempio-dom" class="slide level2">
+<h1>Esempio DOM</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> elm <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&#39;my-element&#39;</span>)<span class="op">;</span>
+<span class="va">elm</span>.<span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;New pirate text!&#39;</span><span class="op">;</span>
+<span class="va">elm</span>.<span class="va">style</span>.<span class="at">color</span> <span class="op">=</span> <span class="st">&#39;whitesmoke&#39;</span><span class="op">;</span>
+<span class="va">elm</span>.<span class="at">style</span>[<span class="st">&#39;background-color&#39;</span>] <span class="op">=</span> <span class="st">&#39;black&#39;</span><span class="op">;</span>
+
+<span class="kw">var</span> newElm <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&#39;span&#39;</span>)<span class="op">;</span>
+<span class="va">newElm</span>.<span class="va">style</span>.<span class="at">color</span> <span class="op">=</span> <span class="st">&#39;yellow&#39;</span><span class="op">;</span>
+<span class="va">newElm</span>.<span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;some text&#39;</span><span class="op">;</span>
+<span class="va">elm</span>.<span class="at">appendChild</span>(newElm)<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/8een3gz5/" class="uri">https://jsfiddle.net/acidghost/8een3gz5/</a></p>
+</section><section id="eventi" class="slide level2 smaller all">
+<h1>Eventi</h1>
+<ul>
+<li class="fragment">JS può rispondere a diversi eventi
+<ul>
+<li class="fragment">mouse related: <code>onclick</code>, <code>onmouseover</code>, <code>onmouseout</code>, <code>onmouseup</code>, <code>onmousedown</code></li>
+<li class="fragment">keyboard related: <code>onkeydown</code>, <code>onkeyup</code></li>
+<li class="fragment">altri: <code>onload</code> / <code>onunload</code>, <code>onchange</code>, <code>onfocus</code>, …</li>
+</ul></li>
+<li class="fragment">programmatore dichiara <strong>handlers</strong>
+<ul>
+<li class="fragment">in JS: <code>element.onclick = function(evt) { ... }</code>
+<ul>
+<li class="fragment"><strong>beware!</strong> sovrascrive altri handlers</li>
+</ul></li>
+<li class="fragment">in JS: <code>element.addEventListener('click', function(evt) { ... })</code> o <code>element.addEventListener('click', myFunc)</code>
+<ul>
+<li class="fragment"><strong>beware!</strong> omettere prefisso <code>on</code> -&gt; <code>click</code></li>
+</ul></li>
+<li class="fragment">in HTML: <code>&lt;a href=&quot;...&quot; onclick=&quot;javascript:myFunction()&quot;&gt;...&lt;/a&gt;</code></li>
+</ul></li>
+</ul>
+</section><section id="eventi-esempio" class="slide level2">
+<h1>Eventi: esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> btn <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementsByTagName</span>(<span class="st">&#39;button&#39;</span>)[<span class="dv">0</span>]<span class="op">;</span>
+<span class="kw">var</span> myHandler <span class="op">=</span> <span class="kw">function</span>(evt) <span class="op">{</span>
+  <span class="va">document</span>.<span class="at">write</span>(<span class="st">&#39;Bottone cliccato!&#39;</span>)<span class="op">;</span>
+<span class="op">};</span>
+<span class="va">btn</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> myHandler)<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/cup7runb/" class="uri">https://jsfiddle.net/acidghost/cup7runb/</a></p>
+</section><section id="bom-the-window-object" class="slide level2 smaller all">
+<h1>BOM: the <code>window</code> object</h1>
+<ul>
+<li class="fragment">API per interagire con la finestra</li>
+<li class="fragment">variabili e funzioni globali sono proprietà e metodi di <code>window</code>
+<ul>
+<li class="fragment">quindi <code>document.getElementById === window.document.getElementById</code></li>
+</ul></li>
+<li class="fragment">proprietà comuni:
+<ul>
+<li class="fragment"><code>innerHeight</code>, <code>innerWidth</code>, <code>outerHeight</code>, <code>outerWidth</code>, <code>screenX</code>, <code>screenY</code>, <code>scrollX</code>, <code>scrollY</code>, …</li>
+</ul></li>
+<li class="fragment">metodi comuni:
+<ul>
+<li class="fragment"><code>alert()</code>, <code>confirm()</code>, <code>prompt()</code>, <code>close()</code>, <code>open()</code>, <code>setInterval()</code>, <code>setTimeout()</code>, <code>scrollTo()</code>, <code>scrollBy()</code>, …</li>
+</ul></li>
+</ul>
+</section><section id="bom-esempio" class="slide level2">
+<h1>BOM: esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="kw">var</span> nome <span class="op">=</span> <span class="va">window</span>.<span class="at">prompt</span>(<span class="st">&#39;Inserisci il tuo nome:&#39;</span>)<span class="op">;</span>
+<span class="va">window</span>.<span class="at">alert</span>(<span class="st">&#39;Hai inserito &#39;</span> <span class="op">+</span> nome)<span class="op">;</span>
+<span class="va">window</span>.<span class="at">setInterval</span>(<span class="kw">function</span>() <span class="op">{</span> <span class="va">console</span>.<span class="at">log</span>(nome) <span class="op">},</span> <span class="dv">1000</span>)<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/txe3xodf/" class="uri">https://jsfiddle.net/acidghost/txe3xodf/</a></p>
+</section><section id="references-1" class="slide level2">
+<h1>References</h1>
+<ul>
+<li><a href="http://www.w3schools.com/js/default.asp">w3schools JS guide</a></li>
+<li><a href="http://www.w3schools.com/jsref/default.asp">w3schools JS reference</a></li>
+<li><a href="http://shop.oreilly.com/product/9780596517748.do">JavaScript: The Good Parts</a></li>
+</ul>
+</section></section>
+<section><section id="jquery" class="titleslide slide level1"><h1>jQuery<br />
+the write less, do more, JS lib</h1></section><section id="jquery-esempio" class="slide level2">
+<h1>jQuery: esempio</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="at">$</span>(document).<span class="at">ready</span>(<span class="kw">function</span>() <span class="op">{</span>
+  <span class="at">$</span>(<span class="st">&#39;p&#39;</span>).<span class="at">click</span>(<span class="kw">function</span>()<span class="op">{</span>
+    <span class="at">$</span>(<span class="kw">this</span>).<span class="at">hide</span>()<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Paragrafo nascosto&#39;</span>)<span class="op">;</span>
+  <span class="op">}</span>)<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/mLvdfnvh/" class="uri">https://jsfiddle.net/acidghost/mLvdfnvh/</a></p>
+</section><section id="jquery-usage" class="slide level2">
+<h1>jQuery: usage</h1>
+<ul>
+<li class="fragment">caricare lib nella pagina
+<ul>
+<li class="fragment"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-3.1.0.min.js&quot;&gt;&lt;/script&gt;</code></li>
+</ul></li>
+<li class="fragment">selezionare elementi con <code>$('css selector')</code></li>
+<li class="fragment">azioni su elementi con <code>$('css selector').action()</code></li>
+</ul>
+</section><section id="jquery-css-selectors" class="slide level2">
+<h1>jQuery: CSS selectors</h1>
+<ul>
+<li class="fragment">via <code>id</code>: <code>$('#my-element')</code></li>
+<li class="fragment">via <code>class</code>: <code>$('.to-hide')</code></li>
+<li class="fragment">via modificatori: <code>$(':first')</code>, <code>$(':nth-of-type(10)')</code>, <code>$(':even')</code>, <code>$(':odd')</code>, …</li>
+<li class="fragment">via attributi: <code>$('[href=&quot;www.google.com&quot;]')</code>, …</li>
+<li class="fragment">child selector <code>&gt;</code>: <code>$('p &gt; span')</code></li>
+</ul>
+</section><section id="jquery-css-selectors-example" class="slide level2 smaller">
+<h1>jQuery: CSS selectors example</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="at">$</span>(document).<span class="at">ready</span>(<span class="kw">function</span>() <span class="op">{</span>
+  <span class="at">$</span>(<span class="st">&#39;ul li:first&#39;</span>).<span class="at">text</span>(<span class="st">&#39;new text&#39;</span>)<span class="op">;</span>
+  <span class="at">$</span>(<span class="st">&#39;.my-par &gt; span&#39;</span>).<span class="at">css</span>(<span class="op">{</span>
+    <span class="dt">color</span><span class="op">:</span> <span class="st">&#39;yellow&#39;</span><span class="op">,</span>
+    <span class="st">&#39;background-color&#39;</span><span class="op">:</span> <span class="st">&#39;black&#39;</span>
+  <span class="op">}</span>)<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/uh2trcbs/" class="uri">https://jsfiddle.net/acidghost/uh2trcbs/</a></p>
+</section><section id="jquery-effects" class="slide level2">
+<h1>jQuery effects</h1>
+<ul>
+<li class="fragment"><code>hide()</code>, <code>show()</code>, <code>toggle()</code>, <code>fadeIn()</code>, <code>fadeOut()</code>, <code>fadeToggle()</code></li>
+<li class="fragment">argomenti opzionali:
+<ul>
+<li class="fragment"><code>speed</code>: <code>'fast'</code>, <code>'slow'</code>, in milliseconds</li>
+<li class="fragment"><code>callback</code>: funzione eseguita al termine dell’azione</li>
+</ul></li>
+</ul>
+</section><section id="jquery-effects-1" class="slide level2">
+<h1>jQuery effects</h1>
+<ul>
+<li class="fragment"><code>animate()</code> per animazioni custom</li>
+<li class="fragment"><code>$(selector).animate({params}, speed, callback);</code></li>
+</ul>
+</section><section id="jquery-effects-2" class="slide level2">
+<h1> jQuery effects</h1>
+<div class="sourceCode"><table class="sourceCode js numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="sourceCode"><pre><code class="sourceCode javascript"><span class="at">$</span>(document).<span class="at">ready</span>(<span class="kw">function</span>()<span class="op">{</span>
+  <span class="at">$</span>(<span class="st">&quot;button&quot;</span>).<span class="at">click</span>(<span class="kw">function</span>()<span class="op">{</span>
+    <span class="at">$</span>(<span class="st">&quot;div&quot;</span>).<span class="at">animate</span>(<span class="op">{</span>
+      <span class="dt">left</span><span class="op">:</span> <span class="st">&#39;250px&#39;</span><span class="op">,</span>
+      <span class="dt">opacity</span><span class="op">:</span> <span class="st">&#39;0.5&#39;</span><span class="op">,</span>
+      <span class="dt">height</span><span class="op">:</span> <span class="st">&#39;150px&#39;</span><span class="op">,</span>
+      <span class="dt">width</span><span class="op">:</span> <span class="st">&#39;150px&#39;</span>
+    <span class="op">},</span> <span class="kw">function</span>() <span class="op">{</span>
+        <span class="at">$</span>(<span class="st">&#39;div&#39;</span>).<span class="at">animate</span>(<span class="op">{</span>
+        <span class="dt">left</span><span class="op">:</span> <span class="st">&#39;0px&#39;</span><span class="op">,</span>
+        <span class="dt">opacity</span><span class="op">:</span> <span class="st">&#39;1&#39;</span><span class="op">,</span>
+        <span class="dt">height</span><span class="op">:</span> <span class="st">&#39;50px&#39;</span>
+      <span class="op">},</span> <span class="dv">2000</span>)<span class="op">;</span>
+    <span class="op">}</span>)<span class="op">;</span>
+  <span class="op">}</span>)<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></td></tr></table></div>
+<p><a href="https://jsfiddle.net/acidghost/fy85jh8f/" class="uri">https://jsfiddle.net/acidghost/fy85jh8f/</a></p>
+</section><section id="jquery-dom-modification" class="slide level2 smaller">
+<h1>jQuery DOM modification</h1>
+<ul>
+<li class="fragment">content: <code>text()</code>, <code>html()</code></li>
+<li class="fragment">attributes: <code>attr()</code>, <code>val()</code></li>
+<li class="fragment">utilizzati sia in <em>get</em> che <em>set</em></li>
+<li class="fragment">aggiungere: <code>append()</code>, <code>prepend()</code>, <code>after()</code>, <code>before()</code></li>
+<li class="fragment">rimuovere: <code>remove()</code>, <code>empty()</code></li>
+</ul>
+</section><section id="jquery-dom-traversing" class="slide level2">
+<h1>jQuery DOM traversing</h1>
+<ul>
+<li class="fragment">navigare gli elementi del DOM</li>
+<li class="fragment">ancestors: <code>parent()</code>, <code>parents()</code></li>
+<li class="fragment">descendants: <code>children()</code>, <code>find()</code></li>
+<li class="fragment">siblings: <code>siblings()</code>, <code>next()</code>, <code>prev()</code></li>
+<li class="fragment">accettano CSS selector</li>
+<li class="fragment">filtering: <code>first()</code>, <code>last()</code>, <code>eq(n)</code>, <code>not(selector)</code></li>
+</ul>
+</section><section id="references-2" class="slide level2">
+<h1>References</h1>
+<ul>
+<li><a href="http://jquery.com/">jQuery.com</a></li>
+<li><a href="http://www.w3schools.com/jquery/default.asp">w3schools jQuery tutorial</a></li>
+<li><a href="http://www.w3schools.com/jquery/jquery_ref_selectors.asp">w3schools jQuery reference</a></li>
+</ul>
+</section></section>
+<section><section id="practice-time-1" class="titleslide slide level1"><h1>Practice time!</h1></section><section id="generatore-di-nomi-pirata" class="slide level2">
+<h1>Generatore di nomi pirata</h1>
+<ul>
+<li class="fragment">trasformare un nome e cognome in nome <strong>pirata</strong></li>
+<li class="fragment">creare due elementi <code>&lt;input type=&quot;text&quot; /&gt;</code></li>
+<li class="fragment">trasformare il nome (…)</li>
+<li class="fragment">includere un soprannome (casualmente)</li>
+<li class="fragment">sostituire il cognome con un nome pirata con la stessa iniziale (casualmente)</li>
+<li class="fragment">visualizzare il risultato in un elemento HTML (<code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;input /&gt;</code>, …)</li>
+<li class="fragment"><a href="https://jsfiddle.net/acidghost/dw5jLc3r/" class="uri">https://jsfiddle.net/acidghost/dw5jLc3r/</a></li>
+</ul>
+</section><section id="js-wat" class="slide level2">
+<h1>JS wat!?</h1>
+<video width="700" height="525" preload="none" controls>
+<source src="./media/wat.mov">
+</source>
+</video>
+<p><a href="https://www.destroyallsoftware.com/talks/wat">source: https://www.destroyallsoftware.com/talks/wat</a></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
